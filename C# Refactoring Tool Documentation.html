@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C# Refactoring Tool Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        h1, h2 {
+            color: #2c3e50;
+        }
+
+        code {
+            background-color: #f1f1f1;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        .warning {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .example {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>C# Code Refactoring Tool</h1>
+
+    <div class="container">
+        <h2>Purpose</h2>
+        <p>This Python script automatically refactors large C# methods by moving them into separate classes while maintaining functionality through delegation.</p>
+    </div>
+
+    <div class="container">
+        <h2>How to Use</h2>
+        <ol>
+            <li>Place your C# file in the same directory as the Python script</li>
+            <li>Set the desired line threshold for method size</li>
+            <li>Run the script with your input file:
+                <div class="example">
+                    <code>python refactor_tool.py</code>
+                </div>
+            </li>
+        </ol>
+    </div>
+
+    <div class="container">
+        <h2>Example Input/Output</h2>
+        <p>Input file structure:</p>
+        <div class="example">
+            <code>
+                namespace MyApp {<br>
+                &nbsp;&nbsp;public class MyClass {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public void LargeMethod() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// More than threshold lines of code<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;}<br>
+                }
+            </code>
+        </div>
+
+        <p>Generated output:</p>
+        <div class="example">
+            <code>
+                // Original file (refactored):<br>
+                public void LargeMethod() {<br>
+                &nbsp;&nbsp;return new LargeMethodClass().LargeMethod();<br>
+                }<br><br>
+                // New file (LargeMethodClass.cs):<br>
+                public class LargeMethodClass {<br>
+                &nbsp;&nbsp;// Original method implementation<br>
+                }
+            </code>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Features</h2>
+        <ul>
+            <li>Automatically identifies methods exceeding size threshold</li>
+            <li>Creates separate class files for large methods</li>
+            <li>Maintains original method signatures and access modifiers</li>
+            <li>Handles method parameters and return types</li>
+            <li>Preserves namespace structure</li>
+        </ul>
+    </div>
+
+    <div class="warning">
+        <h2>Limitations</h2>
+        <ul>
+            <li>May not handle all C# syntax variations</li>
+            <li>Doesn't handle complex dependencies between methods</li>
+            <li>Limited support for class fields and properties</li>
+            <li>Basic parsing of C# syntax (no full C# parser)</li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h2>File Output</h2>
+        <p>The script generates:</p>
+        <ul>
+            <li>A refactored version of your original file (<code>originalname_refactored.cs</code>)</li>
+            <li>Separate class files for each extracted method (<code>MethodNameClass.cs</code>)</li>
+        </ul>
+    </div>
+</body>
+</html>
